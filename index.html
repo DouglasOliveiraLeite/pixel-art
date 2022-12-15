@@ -12,17 +12,19 @@
 
     <section>
         <h1 id="title">Paleta de Cores</h1>
-        <p id="escolherCor">Escolha sua cor</p>
-        <button id="clear-btn">LIMPAR</button>
-        <div id="controle-cor">
-            <ul id="color-palette">
-                                
-                <div class="cor black" id="cor1">a</div>
-                <div class="color" class="mudarcor">b</div> 
-                <div class="color" class="mudarcor">c</div>
-                <div class="color" class="mudarcor">d</div>
-                
-            </ul>
+        <h1 id="escolherCor">Escolha sua cor</h1>
+        
+        <div class="buttons">
+            <button onclick="setRandomColor()" id="button1">Cores Aleatórias</button>
+            <button onclick="colorReset()" id="button2">Limpar</button>
+        </div>
+       
+            <div id="color-palette">                  
+                <div class="color" class="mudarcor">.</div>
+                <div class="color" class="mudarcor">.</div> 
+                <div class="color" class="mudarcor">.</div>
+                <div class="color" class="mudarcor">.</div>
+            </div>
            
         </div>
     </section>
@@ -32,7 +34,9 @@
     </div>
 
 </main>
-    <script src="script.js"></script>
+
+
+<script src="script.js"></script>
 </body>
 
 </html>
