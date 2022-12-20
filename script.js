@@ -1,5 +1,6 @@
 const getPaleta = document.getElementById('Paleta');
 const getButton = document.getElementById('button-random-color');
+const quadroPixel = document.querySelector('#pixel-board');
 
 const createHeader = () => {
   const createHeaders = document.createElement('header');
@@ -67,7 +68,6 @@ function pegarCorPaleta() {
   }
 }
 function generatePixel() {
-  const quadroPixel = document.querySelector('#pixel-board');
   for (let index = 0; index < 5; index += 1) {
     const criandoLinha = document.createElement('div');
     criandoLinha.className = 'line';
@@ -96,6 +96,16 @@ function pegarCor() {
     classColor[index].addEventListener('click', selecionarCor);
   }
 }
+
+function pintarPixel(event) {
+  const corSelecionada = document.querySelector('.selected');
+  const fundoCorSelecionada = corSelecionada.style.backgroundColor;
+  if (event.target.className.includes('pixel')) {
+    event.target.style.backgroundColor = fundoCorSelecionada;
+  }
+}
+
+quadroPixel.addEventListener('click', pintarPixel);
 
 function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {
