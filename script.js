@@ -3,6 +3,15 @@ const getButton = document.getElementById('button-random-color');
 const quadroPixel = document.querySelector('#pixel-board');
 const limparPixel = document.querySelector('#clear-board');
 
+function loadCores() {
+  const salvarpixel = document.querySelectorAll('.pixel');
+  const salvos = localStorage.getItem('pixelBoard');
+  const parseSalvos = JSON.parse(salvos);
+  for (let index = 0; index < parseSalvos.length; index += 1) {
+    salvarpixel[index].style.backgroundColor = parseSalvos[index];
+  }
+}
+
 const createHeader = () => {
   const createHeaders = document.createElement('header');
   getPaleta.appendChild(createHeaders);
@@ -109,32 +118,48 @@ function pintarPixel(event) {
 
 quadroPixel.addEventListener('click', pintarPixel);
 
+quadroPixel.addEventListener('click', (event) => {
+  const salvarpixel = document.getElementsByClassName('pixel');
+  const pixelsalvo = [];
+  if (event.target.className.includes('pixel')) {
+    for (let index = 0; index < salvarpixel.length; index += 1) {
+      pixelsalvo.push(salvarpixel[index].style.backgroundColor);
+      localStorage.setItem('pixelBoard', JSON.stringify(pixelsalvo));
+    }
+  }
+});
+
 function limpar() {
   const limpartudo = document.querySelectorAll('.pixel');
   for (let index = 0; index < limpartudo.length; index += 1) {
     limpartudo[index].style.backgroundColor = 'white';
+    localStorage.removeItem('pixelBoard');
   }
 }
 
 limparPixel.addEventListener('click', limpar);
 
+function carregarBasico() {
+  createHeader();
+  createH1();
+  createPalette();
+  generatePalette();
+}
+
 function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {
-    createHeader();
-    createH1();
-    createPalette();
-    generatePalette();
+    carregarBasico();
     pintarPaleta();
     generatePixel();
     pegarCor();
   } else {
-    createHeader();
-    createH1();
-    createPalette();
-    generatePalette();
+    carregarBasico();
     pegarCorPaleta();
     generatePixel();
     pegarCor();
+  }
+  if (localStorage.getItem('pixelBoard') !== null) {
+    loadCores();
   }
   inicialColorSelected();
 }
