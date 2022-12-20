@@ -45,23 +45,42 @@ const randomColor = () => {
 };
 
 const pintarPaleta = () => {
+  const arrayColor = ['black'];
   const getColor = document.querySelectorAll('.color');
-  for (let i = 0; i < getColor.length; i += 1) {
-    if (i === 0) {
-      getColor[i].style.backgroundColor = 'black';
-    } else {
-      getColor[i].style.backgroundColor = randomColor();
-    }
+  for (let i = 1; i < getColor.length; i += 1) {
+    const generateColor = randomColor();
+    getColor[i].style.backgroundColor = generateColor;
+    arrayColor.push(generateColor);
   }
+  getColor[0].style.backgroundColor = 'black';
+  localStorage.setItem('colorPalette', JSON.stringify(arrayColor));
 };
 
 getButton.addEventListener('click', pintarPaleta);
 
+function pegarCorPaleta() {
+  const domCores = document.querySelectorAll('.color');
+  const coresSalvas = localStorage.getItem('colorPalette');
+  const arrayCores = JSON.parse(coresSalvas);
+  for (let i = 0; i < domCores.length; i += 1) {
+    domCores[i].style.backgroundColor = arrayCores[i];
+  }
+}
+
+function carregarPag() {
+  if (localStorage.getItem('colorPalette') === null) {
+    createHeader();
+    createH1();
+    createPalette();
+    generatePalette();
+    pintarPaleta();
+  } else {
+    createHeader();
+    createH1();
+    createPalette();
+    generatePalette();
+    pegarCorPaleta();
+  }
+}
 // execut functions //
-window.onload = () => {
-  createHeader();
-  createH1();
-  createPalette();
-  generatePalette();
-  pintarPaleta();
-};
+window.onload = () => carregarPag();

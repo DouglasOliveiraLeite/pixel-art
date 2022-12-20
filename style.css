@@ -1,0 +1,18 @@
+body {
+    background-image: url(./pixelart.jpg);
+}
+
+#title {
+    text-align: center;
+}
+
+#button-random-color {
+    align-items: center;
+    text-align: center;
+}
+
+#buttons {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
