@@ -80,6 +80,23 @@ function generatePixel() {
   }
 }
 
+function inicialColorSelected() {
+  document.querySelectorAll('.color')[0].classList.add('selected');
+}
+
+function selecionarCor(event) {
+  const corSelecionada = document.querySelector('.selected');
+  corSelecionada.classList.remove('selected');
+  event.target.classList.add('selected');
+}
+
+function pegarCor() {
+  const classColor = document.querySelectorAll('.color');
+  for (let index = 0; index < classColor.length; index += 1) {
+    classColor[index].addEventListener('click', selecionarCor);
+  }
+}
+
 function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {
     createHeader();
@@ -88,6 +105,7 @@ function carregarPag() {
     generatePalette();
     pintarPaleta();
     generatePixel();
+    pegarCor();
   } else {
     createHeader();
     createH1();
@@ -95,7 +113,9 @@ function carregarPag() {
     generatePalette();
     pegarCorPaleta();
     generatePixel();
+    pegarCor();
   }
+  inicialColorSelected();
 }
 // execut functions //
 window.onload = () => carregarPag();
