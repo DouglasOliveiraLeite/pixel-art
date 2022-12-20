@@ -66,6 +66,19 @@ function pegarCorPaleta() {
     domCores[i].style.backgroundColor = arrayCores[i];
   }
 }
+function generatePixel() {
+  const quadroPixel = document.querySelector('#pixel-board');
+  for (let index = 0; index < 5; index += 1) {
+    const criandoLinha = document.createElement('div');
+    criandoLinha.className = 'line';
+    for (let x = 0; x < 5; x += 1) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      criandoLinha.appendChild(pixel);
+    }
+    quadroPixel.appendChild(criandoLinha);
+  }
+}
 
 function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {
@@ -74,12 +87,14 @@ function carregarPag() {
     createPalette();
     generatePalette();
     pintarPaleta();
+    generatePixel();
   } else {
     createHeader();
     createH1();
     createPalette();
     generatePalette();
     pegarCorPaleta();
+    generatePixel();
   }
 }
 // execut functions //
