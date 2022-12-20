@@ -1,6 +1,7 @@
 const getPaleta = document.getElementById('Paleta');
 const getButton = document.getElementById('button-random-color');
 const quadroPixel = document.querySelector('#pixel-board');
+const limparPixel = document.querySelector('#clear-board');
 
 const createHeader = () => {
   const createHeaders = document.createElement('header');
@@ -106,6 +107,15 @@ function pintarPixel(event) {
 }
 
 quadroPixel.addEventListener('click', pintarPixel);
+
+function limpar() {
+  const limpartudo = document.querySelectorAll('.pixel');
+  for (let index = 0; index < limpartudo.length; index += 1) {
+    limpartudo[index].style.backgroundColor = 'white';
+  }
+}
+
+limparPixel.addEventListener('click', limpar);
 
 function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {

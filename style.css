@@ -17,6 +17,13 @@ body {
 
 }
 
+#clear-board {
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold
+}
+
 #buttons {
     align-items: center;
     text-align: center;
