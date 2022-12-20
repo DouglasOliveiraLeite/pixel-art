@@ -101,8 +101,9 @@ function pegarCor() {
 function pintarPixel(event) {
   const corSelecionada = document.querySelector('.selected');
   const fundoCorSelecionada = corSelecionada.style.backgroundColor;
+  const teste = event.target;
   if (event.target.className.includes('pixel')) {
-    event.target.style.backgroundColor = fundoCorSelecionada;
+    teste.style.backgroundColor = fundoCorSelecionada;
   }
 }
 
