@@ -30,6 +30,13 @@ body {
     margin-top: 20px;
 }
 
+#generate-board {
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+
 #pixel-board {
     text-align: center;
     margin-top: 20px;
@@ -46,4 +53,18 @@ body {
     vertical-align: middle;
     display: inline-block; 
     background-color: white;
+}
+
+#board-size {
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold
+}
+
+#generate-board {
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold
 }

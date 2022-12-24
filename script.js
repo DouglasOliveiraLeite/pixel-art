@@ -2,6 +2,8 @@ const getPaleta = document.getElementById('Paleta');
 const getButton = document.getElementById('button-random-color');
 const quadroPixel = document.querySelector('#pixel-board');
 const limparPixel = document.querySelector('#clear-board');
+const input = document.querySelector('#board-size');
+const button = document.querySelector('#generate-board');
 
 function loadCores() {
   const salvarpixel = document.querySelectorAll('.pixel');
@@ -77,11 +79,13 @@ function pegarCorPaleta() {
     domCores[i].style.backgroundColor = arrayCores[i];
   }
 }
-function generatePixel() {
-  for (let index = 0; index < 5; index += 1) {
+function generatePixel(boardSize) {
+  const inputpixel = boardSize;
+
+  for (let index = 0; index < inputpixel; index += 1) {
     const criandoLinha = document.createElement('div');
     criandoLinha.className = 'line';
-    for (let x = 0; x < 5; x += 1) {
+    for (let x = 0; x < inputpixel; x += 1) {
       const pixel = document.createElement('div');
       pixel.className = 'pixel';
       criandoLinha.appendChild(pixel);
@@ -139,6 +143,17 @@ function limpar() {
 
 limparPixel.addEventListener('click', limpar);
 
+function mudarPixel() {
+  if (!input.value) {
+    alert('Board inválido!');
+  } else {
+    quadroPixel.innerHTML = '';
+    generatePixel(input.value);
+  }
+}
+
+button.addEventListener('click', mudarPixel);
+
 function carregarBasico() {
   createHeader();
   createH1();
@@ -150,12 +165,12 @@ function carregarPag() {
   if (localStorage.getItem('colorPalette') === null) {
     carregarBasico();
     pintarPaleta();
-    generatePixel();
+    generatePixel(5);
     pegarCor();
   } else {
     carregarBasico();
     pegarCorPaleta();
-    generatePixel();
+    generatePixel(5);
     pegarCor();
   }
   if (localStorage.getItem('pixelBoard') !== null) {
