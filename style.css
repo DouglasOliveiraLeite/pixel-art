@@ -1,5 +1,6 @@
 body {
-    background-image: url(./1330924.jpg)
+    background-image: url(./1330924.jpg);
+    filter:blur(10)
 }
 
 #title {
@@ -9,12 +10,15 @@ body {
 
 }
 
+h2 {
+    font-size: 23px;
+}
+
 #button-random-color {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    font-weight: bold
-
+    font-weight: bold;
 }
 
 #clear-board {
